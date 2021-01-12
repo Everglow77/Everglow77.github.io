@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="SpringMVC的学习," />
+  <meta name="keywords" content="SpringMVC的学习：回顾Servlet，了解SpringMVC的执行原理。," />
 
 
 
@@ -81,16 +81,16 @@
 
 <meta name="description" content="1、什么是MVCMVC:     模型（model）&#x3D;&gt;dao,service   视图（view）&#x3D;&gt;jsp ，控制器（controller）&#x3D;&gt;Servlet 三层架构的职责分析Controller：1：取得表单数据  2：调用业务逻辑 3：转向指定的页面 Model：1：业务逻辑 2：保存数据的状态 View：1：显示页面">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringMVC">
+<meta property="og:title" content="SpringMVC01">
 <meta property="og:url" content="http://everglow77.github.io/2021/01/09/SpringMVC01/index.html">
 <meta property="og:site_name" content="Everglowの博客">
 <meta property="og:description" content="1、什么是MVCMVC:     模型（model）&#x3D;&gt;dao,service   视图（view）&#x3D;&gt;jsp ，控制器（controller）&#x3D;&gt;Servlet 三层架构的职责分析Controller：1：取得表单数据  2：调用业务逻辑 3：转向指定的页面 Model：1：业务逻辑 2：保存数据的状态 View：1：显示页面">
 <meta property="og:locale">
 <meta property="og:image" content="https://i.loli.net/2021/01/12/RHP8GYa9rdouWzv.png">
 <meta property="article:published_time" content="2021-01-09T09:00:49.000Z">
-<meta property="article:modified_time" content="2021-01-12T09:12:35.221Z">
+<meta property="article:modified_time" content="2021-01-12T11:34:05.439Z">
 <meta property="article:author" content="泷">
-<meta property="article:tag" content="SpringMVC的学习">
+<meta property="article:tag" content="SpringMVC的学习：回顾Servlet，了解SpringMVC的执行原理。">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2021/01/12/RHP8GYa9rdouWzv.png">
 
@@ -128,7 +128,7 @@
 
 
 
-  <title>SpringMVC | Everglowの博客</title>
+  <title>SpringMVC01 | Everglowの博客</title>
   
 
 
@@ -252,7 +252,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SpringMVC</h1>
+          <h1 class="post-title" itemprop="name headline">SpringMVC01</h1>
         
 
         <div class="post-meta">
@@ -331,13 +331,20 @@
 <p>Spring MVC框架像许多其他MVC框架一样, 以请求为驱动 , 围绕一个中心Servlet分派请求及提供其他功能，DispatcherServlet是一个实际的Servlet (它继承自HttpServlet 基类)。</p>
 <h4 id="SpringMVC的执行原理"><a href="#SpringMVC的执行原理" class="headerlink" title="SpringMVC的执行原理"></a>SpringMVC的执行原理</h4><p><img src="https://i.loli.net/2021/01/12/RHP8GYa9rdouWzv.png" alt="SpringMVC的执行原理.png"></p>
 <ol>
-<li>一个请求匹配前端控制器 DispatcherServlet 的请求映射路径(在 web.xml中指定), WEB 容器将该请求转交给 DispatcherServlet 处理</li>
-<li>DispatcherServlet 接收到请求后, 将根据 请求信息 交给 处理器映射器 （HandlerMapping）</li>
-<li>HandlerMapping 根据用户的url请求 查找匹配该url的 Handler，并返回一个执行链</li>
-<li>DispatcherServlet 再请求 处理器适配器(HandlerAdapter) 调用相应的 Handler 进行处理并返回 ModelAndView 给 DispatcherServlet</li>
-<li>DispatcherServlet 将 ModelAndView 请求 ViewReslover（视图解析器）解析，返回具体 View</li>
-<li>DispatcherServlet 对 View 进行渲染视图（即将模型数据填充至视图中）</li>
-<li>DispatcherServlet 将页面响应给用户</li>
+<li><p>一个请求匹配前端控制器 DispatcherServlet 的请求映射路径(在 web.xml中指定), WEB 容器将该请求转交给 DispatcherServlet 处理</p>
+</li>
+<li><p>DispatcherServlet 接收到请求后, 将根据 请求信息 交给 处理器映射器 （HandlerMapping）</p>
+</li>
+<li><p>HandlerMapping 根据用户的url请求 查找匹配该url的 Handler，并返回一个执行链</p>
+</li>
+<li><p>DispatcherServlet 再请求 处理器适配器(HandlerAdapter) 调用相应的 Handler 进行处理并返回 ModelAndView 给 DispatcherServlet</p>
+</li>
+<li><p>DispatcherServlet 将 ModelAndView 请求 ViewReslover（视图解析器）解析，返回具体 View</p>
+</li>
+<li><p>DispatcherServlet 对 View 进行渲染视图（即将模型数据填充至视图中）</p>
+</li>
+<li><p>DispatcherServlet 将页面响应给用户</p>
+<h4 id="SpringMVC的注解"><a href="#SpringMVC的注解" class="headerlink" title="SpringMVC的注解"></a>SpringMVC的注解</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Component    组件</span><br><span class="line">@Service     service</span><br><span class="line">@Controller  controller</span><br><span class="line">@Repository   dao</span><br></pre></td></tr></table></figure></li>
 </ol>
 
       
@@ -385,7 +392,7 @@
       
         <div class="post-tags">
           
-            <a href="/Everglow77.github.io/tags/SpringMVC%E7%9A%84%E5%AD%A6%E4%B9%A0/" <i class="fa fa-tag"></i> SpringMVC的学习</a>
+            <a href="/Everglow77.github.io/tags/SpringMVC%E7%9A%84%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%9B%9E%E9%A1%BEServlet%EF%BC%8C%E4%BA%86%E8%A7%A3SpringMVC%E7%9A%84%E6%89%A7%E8%A1%8C%E5%8E%9F%E7%90%86%E3%80%82/" <i class="fa fa-tag"></i> SpringMVC的学习：回顾Servlet，了解SpringMVC的执行原理。</a>
           
         </div>
       
@@ -407,6 +414,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Everglow77.github.io/2021/01/12/SpringMVC02/" rel="prev" title="SpringMVC02">
+                SpringMVC02 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -487,7 +498,7 @@
               
                 <a href="/Everglow77.github.io/archives/%20%7C%7C%20archive">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -500,7 +511,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -533,7 +544,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AFMVC"><span class="nav-number">1.</span> <span class="nav-text">1、什么是MVC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E7%9A%84%E8%81%8C%E8%B4%A3%E5%88%86%E6%9E%90"><span class="nav-number">1.1.</span> <span class="nav-text">三层架构的职责分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Controller%EF%BC%9A"><span class="nav-number">1.1.1.</span> <span class="nav-text">Controller：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Model%EF%BC%9A"><span class="nav-number">1.1.2.</span> <span class="nav-text">Model：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#View%EF%BC%9A"><span class="nav-number">1.1.3.</span> <span class="nav-text">View：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%9B%9E%E9%A1%BEServlet"><span class="nav-number">2.</span> <span class="nav-text">2、回顾Servlet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%BB%80%E4%B9%88%E6%98%AFSpringMVC"><span class="nav-number">3.</span> <span class="nav-text">3.什么是SpringMVC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">3.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AD%E5%BF%83%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="nav-number">3.2.</span> <span class="nav-text">中心控制器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SpringMVC%E7%9A%84%E6%89%A7%E8%A1%8C%E5%8E%9F%E7%90%86"><span class="nav-number">3.3.</span> <span class="nav-text">SpringMVC的执行原理</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AFMVC"><span class="nav-number">1.</span> <span class="nav-text">1、什么是MVC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E7%9A%84%E8%81%8C%E8%B4%A3%E5%88%86%E6%9E%90"><span class="nav-number">1.1.</span> <span class="nav-text">三层架构的职责分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Controller%EF%BC%9A"><span class="nav-number">1.1.1.</span> <span class="nav-text">Controller：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Model%EF%BC%9A"><span class="nav-number">1.1.2.</span> <span class="nav-text">Model：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#View%EF%BC%9A"><span class="nav-number">1.1.3.</span> <span class="nav-text">View：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%9B%9E%E9%A1%BEServlet"><span class="nav-number">2.</span> <span class="nav-text">2、回顾Servlet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E4%BB%80%E4%B9%88%E6%98%AFSpringMVC"><span class="nav-number">3.</span> <span class="nav-text">3.什么是SpringMVC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">3.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AD%E5%BF%83%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="nav-number">3.2.</span> <span class="nav-text">中心控制器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SpringMVC%E7%9A%84%E6%89%A7%E8%A1%8C%E5%8E%9F%E7%90%86"><span class="nav-number">3.3.</span> <span class="nav-text">SpringMVC的执行原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SpringMVC%E7%9A%84%E6%B3%A8%E8%A7%A3"><span class="nav-number">3.4.</span> <span class="nav-text">SpringMVC的注解</span></a></li></ol></li></ol></div>
             
 
           </div>
