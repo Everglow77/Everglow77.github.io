@@ -79,21 +79,20 @@
 
 
 
-<meta name="description" content="结果跳转方式SpringMVC通过SpringMVC来实现转发和重定向–无视图解析器 重定向不需要视图解析器，重定向本质上就是请求一个新地方，所以注意路径问题即可，如果添加视图解析器的话只需把前缀和后缀去掉就可。 测试前将mvc配置文件的视图解析器注释掉 创建测试类ModelTest1 123456789101112131415161718192021222324252627package com">
+<meta name="description" content="结果跳转方式SpringMVC通过SpringMVC来实现转发和重定向–无视图解析器 重定向不需要视图解析器，重定向本质上就是请求一个新地方，所以注意路径问题即可，如果添加视图解析器的话只需把前缀和后缀去掉就可。 测试前将mvc配置文件的视图解析器注释掉">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringMVC04">
 <meta property="og:url" content="http://everglow77.github.io/2021/01/13/SpringMVC04/index.html">
 <meta property="og:site_name" content="Everglowの博客">
-<meta property="og:description" content="结果跳转方式SpringMVC通过SpringMVC来实现转发和重定向–无视图解析器 重定向不需要视图解析器，重定向本质上就是请求一个新地方，所以注意路径问题即可，如果添加视图解析器的话只需把前缀和后缀去掉就可。 测试前将mvc配置文件的视图解析器注释掉 创建测试类ModelTest1 123456789101112131415161718192021222324252627package com">
+<meta property="og:description" content="结果跳转方式SpringMVC通过SpringMVC来实现转发和重定向–无视图解析器 重定向不需要视图解析器，重定向本质上就是请求一个新地方，所以注意路径问题即可，如果添加视图解析器的话只需把前缀和后缀去掉就可。 测试前将mvc配置文件的视图解析器注释掉">
 <meta property="og:locale">
 <meta property="og:image" content="https://i.loli.net/2021/01/13/31GUldnxcb6ABsD.png">
 <meta property="og:image" content="https://i.loli.net/2021/01/13/KI845Aun2hkaCeB.png">
 <meta property="og:image" content="https://i.loli.net/2021/01/13/r9lCWZ8Am6Gcgns.png">
 <meta property="og:image" content="https://i.loli.net/2021/01/13/ZGMvoLpDIJAzxTj.png">
 <meta property="og:image" content="https://i.loli.net/2021/01/13/o4g8vQC3wVslUIT.png">
-<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7IY4LDnTZkk5dLWKMlUlx0gqJOSOA4PQnmhg0rYQYexQXAvUWXvBRf8kN3hk6dDzHxC3w97QicX9XQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="article:published_time" content="2021-01-13T03:49:38.000Z">
-<meta property="article:modified_time" content="2021-01-13T08:32:35.120Z">
+<meta property="article:modified_time" content="2021-01-14T01:42:01.775Z">
 <meta property="article:author" content="泷">
 <meta property="article:tag" content="跳转（重定向和转发）">
 <meta name="twitter:card" content="summary">
@@ -310,6 +309,8 @@
         <h3 id="结果跳转方式"><a href="#结果跳转方式" class="headerlink" title="结果跳转方式"></a>结果跳转方式</h3><h4 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h4><p>通过SpringMVC来实现转发和重定向–无视图解析器</p>
 <p>重定向不需要视图解析器，重定向本质上就是请求一个新地方，所以注意路径问题即可，如果添加视图解析器的话只需把前缀和后缀去掉就可。</p>
 <p>测试前将mvc配置文件的视图解析器注释掉</p>
+<a id="more"></a>
+
 <p>创建测试类ModelTest1</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package com.zhang.controller;</span><br><span class="line"></span><br><span class="line">import org.springframework.stereotype.Controller;</span><br><span class="line">import org.springframework.ui.Model;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"></span><br><span class="line">@Controller</span><br><span class="line">public class ModelTest1 &#123;</span><br><span class="line">    @RequestMapping(&quot;&#x2F;m1&#x2F;t1&quot;)</span><br><span class="line">    public String test1(Model model)&#123;</span><br><span class="line">        &#x2F;&#x2F;转发1,无视图解析器</span><br><span class="line">        model.addAttribute(&quot;msg&quot;,&quot;ModelTest1&quot;);</span><br><span class="line">        return &quot;&#x2F;WEB-INF&#x2F;jsp&#x2F;test.jsp&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    @RequestMapping(&quot;&#x2F;m1&#x2F;t2&quot;)</span><br><span class="line">    public String test2(Model model)&#123;</span><br><span class="line">        &#x2F;&#x2F;转发2,无视图解析器</span><br><span class="line">        model.addAttribute(&quot;msg&quot;,&quot;ModelTest2&quot;);</span><br><span class="line">        return &quot;forward:&#x2F;WEB-INF&#x2F;jsp&#x2F;test.jsp&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    @RequestMapping(&quot;&#x2F;m1&#x2F;t3&quot;)</span><br><span class="line">    public String test3(Model model)&#123;</span><br><span class="line">        &#x2F;&#x2F;重定向,无视图解析器</span><br><span class="line">        model.addAttribute(&quot;msg&quot;,&quot;ModelTest3&quot;);</span><br><span class="line">        return &quot;redirect:&#x2F;index.jsp&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>启动tomcat执行</p>
@@ -365,7 +366,6 @@
 <p>2、后台编写对应的处理类</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">public class Encoding &#123;</span><br><span class="line">   @RequestMapping(&quot;&#x2F;e&#x2F;t&quot;)</span><br><span class="line">   public String test(Model model,String name)&#123;</span><br><span class="line">       model.addAttribute(&quot;msg&quot;,name); &#x2F;&#x2F;获取表单提交的值</span><br><span class="line">       return &quot;test&quot;; &#x2F;&#x2F;跳转到test页面显示输入的值</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>3、输入中文测试，发现乱码</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/uJDAUKrGC7IY4LDnTZkk5dLWKMlUlx0gqJOSOA4PQnmhg0rYQYexQXAvUWXvBRf8kN3hk6dDzHxC3w97QicX9XQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <p>不得不说，乱码问题是在我们开发中十分常见的问题，也是让我们程序猿比较头大的问题！</p>
 <p>以前乱码问题通过过滤器解决 , 而SpringMVC给我们提供了一个过滤器 , 可以在web.xml中配置 .</p>
 <p>修改了xml文件需要重启服务器！</p>
